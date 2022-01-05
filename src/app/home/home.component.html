@@ -1,0 +1,73 @@
+<div>
+    <button id="button" (click)="showHidden()">Hola</button>
+</div>
+
+<div *ngIf="show">
+    <div #about>
+        <h4 [style.color]="color" [ngClass]="{'big' : size == 'big', 'small' : size == 'small'}">
+            Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's
+            standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make
+            a type specimen book. It has survived not only five centuries,
+            but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1
+            960s with the release of Letraset sheets containing Lorem
+            Ipsum passages, and more recently with desktop publishing
+            software like Aldus PageMaker including versions of Lorem
+            IpsumF
+            <button (click)="printElement()">print</button>
+        </h4>
+    </div>
+    <p>home works!</p>
+</div>
+<h4>Ciao {{user}}</h4>
+<h4>Hola {{usero == null ? 'Utente Sconosciuto' : usero}}</h4>
+<p>
+    {{today | date: 'dd/MM/yyyy dd:mm:ss'}} <br>
+    {{today | date: 'dd EEEE MMMM yyyy dd:mm:ss'}} <br><br>
+    {{money | currency}}
+
+</p>
+<div>
+    <h2>La lista delle lezioni</h2>
+    <h3 *ngFor="let i of lista">la lezione : {{i}}</h3>
+</div>
+<select (change)="hello(selectField)" #selectField>
+    <option value="1">Allert</option>
+    <option value="2">Console</option>
+</select>
+<select (change)="colorChange(campo)" #campo>
+    <option value="0">Black</option>
+    <option value="1">Rosso</option>
+    <option value="2">Blue</option>
+    <option value="3">Verde</option>
+</select>
+<select (change)="sizeChange(dimensione)" #dimensione>
+    <option value="0">None</option>
+    <option value="1">Big</option>
+    <option value="2">Small</option>
+</select>
+
+<div class="mainPage">
+    <h2>Esempio di form</h2>
+    <div class="formContainer">
+        <form (ngSubmit)="send()" [formGroup]="form">
+            <input class="form-control" type="text" (input)="checkUser()" placeholder="*Username" formControlName="user">
+           <br><input class="form-control" type="email" placeholder="*Email" formControlName="email">
+           <br><input class="form-control" type="password" placeholder="*Password" formControlName="password">
+           <br><input class="form-control" type="text" placeholder="Number" formControlName="number">
+           <br><input type="submit" value="Invia">
+        
+           {{vecchio}}
+        </form>
+        <div>
+        </div>
+    </div>
+    <h2 *ngIf='loadingGet'>LOADING get</h2>
+    <button (click)="getter()">getter</button>
+
+    <h2 *ngIf='loadingLoad'>LOADING</h2>
+    <button (click)="loadUsers()">loader</button>
+
+</div>
