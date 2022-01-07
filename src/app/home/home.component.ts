@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Prova } from '../models/prova.model';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +33,8 @@ export class HomeComponent implements OnInit {
   selectField : FormControl = new FormControl("amish");
 
   form : FormGroup;
+
+  prova : Prova[] = new Array();
 
   send():void{
     console.log("send")
@@ -84,28 +87,35 @@ export class HomeComponent implements OnInit {
   
    loadingLoad = false;
 
-    valore1= "http://127.0.0.1:5000/"
+    valore1= "http://127.0.0.1:5000/je"
     valore = "http://127.0.0.1:5000/"
-    valore3 = "http://127.0.0.1:5000/"
+    valore3 = "http://127.0.0.1:5000/jo"
+
+    valoreTre():void{
+      this.http.get<Prova[]>(this.valore3).subscribe(res =>{
+        this.prova = res
+      })
+    }
 
    loadUsers(): void{
     this.loadingGet = true;
-    this.http.get(this.valore).subscribe(res =>{
+    this.http.get<Prova[]>(this.valore1).subscribe(res =>{
       this.loadingGet = false;
+      this.prova = res;
       console.log(this.loadingGet)
       console.log(res)
     });
    }
 
    getter():void{
-     this.loadUsers();
+     this.lollo();
     // this.oldLoadUsers().subscribe(this.callBack);
      console.log("ciao")
    }
 
    lollo(){
-     this.http.get(this.valore).subscribe({
-      next: res => console.log("ho " + res),
+     this.http.get<Prova[]>(this.valore).subscribe({
+      next: res => this.prova = res,
       error: error => {                              //Error callback
         console.error('error caught in component')
         console.log(error)

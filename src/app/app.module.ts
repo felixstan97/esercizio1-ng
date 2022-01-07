@@ -8,19 +8,29 @@ import localeIt from '@angular/common/locales/it';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MainComponent } from './main/main.component';
+import { BlogComponent } from './blog/blog.component';
+import { PageComponent } from './page/page.component';
+import { Page404Component } from './page404/page404.component';
 registerLocaleData(localeIt, 'It');
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MainComponent,
+    BlogComponent,
+    PageComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'It'}, 
